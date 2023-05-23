@@ -42,7 +42,7 @@ n_timings)#重复测量多少次，保留最好测量结果
 big_o.datagen.n_(N)就是参数N
 big_o.datagen.integers(N,min,max)返回N个随机整数list
 big_o.datagen.range_n(N)返回参数N的range(N)列表list
-参考：https://pypi.org/project/big-O
+参考官方文档：https://pypi.org/project/big-O
 """
 
 
@@ -68,15 +68,29 @@ Linear: time = -0.00043 + 1.5E-07*n (sec)
 线性:O(n)
 """
 
-complexity, other = big_o(
-    sorted,
-    lambda n: datagen.integers(n, 10000, 50000),
-    min_n=10000,
-    max_n=100000,
-    n_measures=100,
-)
-print(complexity)
+# complexity, other = big_o(
+#     sorted,
+#     lambda n: datagen.integers(n, 10000, 50000),
+#     min_n=10000,
+#     max_n=100000,
+#     n_measures=100,
+# )
+# print(complexity)
 """
 Linearithmic: time = -0.0014 + 4.5E-08*n*log(n) (sec)
 线性对数:O(nlogn)
 """
+
+
+# 创建一个BigO对象
+bigo = big_o()
+
+# 定义一个函数来评估算法的复杂度
+def my_algorithm(n):
+    for i in range(n):
+        print(i)
+
+# 使用BigO对象评估函数的复杂度
+complexity = bigo.calculate(my_algorithm, inputs=[10, 100, 1000])
+print(complexity)
+
