@@ -81,16 +81,3 @@ Linearithmic: time = -0.0014 + 4.5E-08*n*log(n) (sec)
 线性对数:O(nlogn)
 """
 
-
-# 创建一个BigO对象
-bigo = big_o()
-
-# 定义一个函数来评估算法的复杂度
-def my_algorithm(n):
-    for i in range(n):
-        print(i)
-
-# 使用BigO对象评估函数的复杂度
-complexity = bigo.calculate(my_algorithm, inputs=[10, 100, 1000])
-print(complexity)
-
