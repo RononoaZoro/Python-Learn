@@ -92,3 +92,6 @@ print (para_str)
 """
 参考：https://www.runoob.com/python3/python3-string.html
 """
+
+# 以指定字符串作为分隔符，将 seq 中所有的元素(的字符串表示)合并为一个新的字符串
+print(",".join(["1","2"]))

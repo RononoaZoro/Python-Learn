@@ -62,6 +62,10 @@ c = [2, 3]
 print("operator.eq(a,b): ", operator.eq(a, b))
 print("operator.eq(c,b): ", operator.eq(c, b))
 
+# 空列表
+empty_list = []
+empty_list = list()
+
 
 # 列表函数&方法
 """
