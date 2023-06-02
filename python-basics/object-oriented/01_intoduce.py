@@ -76,6 +76,8 @@ t.prt()
 __main__.Test
 """
 
+class EmptyClass:
+    pass
 
 # 继承
 

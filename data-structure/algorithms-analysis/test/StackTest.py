@@ -116,37 +116,36 @@ from pythonds.basic.stack import Stack
   - 把输出列表再用join方法合并成后缀表达式字符串，算法结束。
 """
 
-
-def infixToPostfix(infixespr):
-    prec = {}
-    prec["*"] = 3
-    prec["/"] = 3
-    prec["+"] = 2
-    prec["-"] = 2
-    prec["("] = 1
-    opStack = Stack()
-    postfixList = []
-    tokenList = infixespr.split()
-    for token in tokenList:
-        if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
-            postfixList.append(token)
-        elif token == '(':
-            opStack.push(token)
-        elif token == ')':
-            topToken = opStack.pop()
-            while topToken != None and topToken != '(':
-                postfixList.append(topToken)
-                topToken = opStack.pop()
-        else:
-            while (not opStack.isEmpty()) and \
-                    (prec[opStack.peek()] >= prec[token]):
-                postfixList.append(opStack.pop())
-            opStack.push(token)
-
-    while not opStack.isEmpty():
-        postfixList.append(opStack.pop())
-
-    return " ".join(postfixList)
+# def infixToPostfix(infixespr):
+#     prec = {}
+#     prec["*"] = 3
+#     prec["/"] = 3
+#     prec["+"] = 2
+#     prec["-"] = 2
+#     prec["("] = 1
+#     opStack = Stack()
+#     postfixList = []
+#     tokenList = infixespr.split()
+#     for token in tokenList:
+#         if token in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" or token in "0123456789":
+#             postfixList.append(token)
+#         elif token == '(':
+#             opStack.push(token)
+#         elif token == ')':
+#             topToken = opStack.pop()
+#             while topToken != None and topToken != '(':
+#                 postfixList.append(topToken)
+#                 topToken = opStack.pop()
+#         else:
+#             while (not opStack.isEmpty()) and \
+#                     (prec[opStack.peek()] >= prec[token]):
+#                 postfixList.append(opStack.pop())
+#             opStack.push(token)
+#
+#     while not opStack.isEmpty():
+#         postfixList.append(opStack.pop())
+#
+#     return " ".join(postfixList)
 
 
 #
@@ -179,33 +178,50 @@ def infixToPostfix(infixespr):
 5、弹出栈顶的值，返回。
 """
 
+# def doMath(token, leftOperand, rightOperand):
+#     if token == '+':
+#         return leftOperand + rightOperand
+#     elif token == '-':
+#         return leftOperand - rightOperand
+#     elif token == '*':
+#         return leftOperand * rightOperand
+#     else:
+#         return leftOperand / rightOperand
+#
+#
+# def postfixEval(postfixExpr):
+#     operandStack = Stack()
+#     tokenList = postfixExpr.split()
+#
+#     for token in tokenList:
+#         if token in "0123456789":
+#             operandStack.push(int(token))
+#         else:
+#             rightOperand = operandStack.pop()
+#             leftOperand = operandStack.pop()
+#             result = doMath(token, leftOperand, rightOperand)
+#             operandStack.push(result)
+#
+#     return operandStack.pop()
+#
+#
+# print(infixToPostfix('1 + 2 * 4 + 5 - 6'))
+# print(postfixEval(infixToPostfix('1 + 2 * 4 + 5 - 6')))
 
-def doMath(token, leftOperand, rightOperand):
-    if token == '+':
-        return leftOperand + rightOperand
-    elif token == '-':
-        return leftOperand - rightOperand
-    elif token == '*':
-        return leftOperand * rightOperand
-    else:
-        return leftOperand / rightOperand
+# 一元消消乐
+# st = Stack()
+# s = input()
+# postfixList = []
+# for a in s:
+#     if not st.isEmpty() and a == st.peek():
+#         st.pop()
+#     else:
+#         st.push(a)
+# if st.isEmpty():
+#     print("None")
+# else:
+#     while not st.isEmpty():
+#         postfixList.append(st.pop())
+# print("".join(postfixList))
 
 
-def postfixEval(postfixExpr):
-    operandStack = Stack()
-    tokenList = postfixExpr.split()
-
-    for token in tokenList:
-        if token in "0123456789":
-            operandStack.push(int(token))
-        else:
-            rightOperand = operandStack.pop()
-            leftOperand = operandStack.pop()
-            result = doMath(token, leftOperand, rightOperand)
-            operandStack.push(result)
-
-    return operandStack.pop()
-
-
-print(infixToPostfix('1 + 2 * 4 + 5 - 6'))
-print(postfixEval(infixToPostfix('1 + 2 * 4 + 5 - 6')))
